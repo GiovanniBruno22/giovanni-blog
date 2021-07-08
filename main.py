@@ -13,6 +13,7 @@ import os
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
+# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL",  "sqlite:///blog.db")
 ckeditor = CKEditor(app)
 Bootstrap(app)
 
@@ -77,7 +78,7 @@ class Comment(db.Model):
     text = db.Column(db.Text, nullable=False)
 
 
-# db.create_all()
+db.create_all()
 
 
 gravatar = Gravatar(app,
